@@ -94,3 +94,11 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 public/temp/
 public/uploads/
 public/static/ 
+
+*.zip
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.wim
+*.tar.zst
+*.tar.lzma
