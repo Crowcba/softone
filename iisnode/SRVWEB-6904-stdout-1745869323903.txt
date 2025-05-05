@@ -1,0 +1,42 @@
+> Ready on http://localhost:\\.\pipe\7bd39da5-84e0-4e2c-9b71-6a6075164fa4
+ ○ Compiling /mods/visits/agenda/register ...
+ ✓ Compiled /mods/visits/agenda/register in 17.4s (818 modules)
+Interceptors do axios configurados com sucesso
+=================================================
+Módulo de autenticação inicializado.
+Token disponível: false
+=================================================
+[AddressProfessionalLinksService] Inicializando serviço de vínculos entre endereços e profissionais
+[AddressProfessionalLinksService] Autenticação disponível: false
+ ✓ Compiled /favicon.ico in 487ms (458 modules)
+ ○ Compiling /mods/login ...
+ ✓ Compiled /mods/login in 1157ms (833 modules)
+ ○ Compiling /mods/home ...
+ ✓ Compiled /mods/home in 541ms (825 modules)
+ ○ Compiling /mods/visits/home ...
+ ✓ Compiled /mods/visits/home in 547ms (831 modules)
+ ○ Compiling /mods/visits/agenda ...
+ ✓ Compiled /mods/visits/agenda in 2.2s (841 modules)
+ ✓ Compiled /mods/visits/agenda/register in 289ms (476 modules)
+Interceptors do axios configurados com sucesso
+=================================================
+Módulo de autenticação inicializado.
+Token disponível: false
+=================================================
+ ✓ Compiled /favicon.ico in 281ms (504 modules)
+ ○ Compiling / ...
+ ✓ Compiled / in 1341ms (873 modules)
+Interceptors do axios configurados com sucesso
+=================================================
+Módulo de autenticação inicializado.
+Token disponível: false
+=================================================
+ ✓ Compiled /favicon.ico in 352ms (519 modules)
+Interceptors do axios configurados com sucesso
+=================================================
+Módulo de autenticação inicializado.
+Token disponível: false
+=================================================
+ ✓ Compiled in 1743ms (858 modules)
+ ✓ Compiled in 582ms (858 modules)
+ ✓ Compiled in 980ms (858 modules)

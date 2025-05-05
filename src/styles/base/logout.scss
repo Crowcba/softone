@@ -1,0 +1,356 @@
+// Removendo a importação do Tailwind que causa erro
+// @import "tailwindcss";
+
+// Variáveis
+$colors: (
+  background: #0f0f0f,
+  foreground: #ededed,
+  primary: #DC2626,
+  primary-light: rgba(220, 38, 38, 0.1),
+  primary-dark: #b91c1c,
+  text-light: #e5e5e5,
+  text-muted: #a3a3a3,
+  card-bg: #1e1e1e,
+  card-border: rgba(255, 255, 255, 0.05),
+  card-hover: rgba(255, 255, 255, 0.1),
+  success: #16A34A,
+  success-light: rgba(22, 163, 74, 0.1),
+  error: #ef4444
+);
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin animation($name, $duration, $timing, $delay: 0s) {
+  animation: $name $duration $timing $delay;
+}
+
+// Criar variáveis CSS a partir do mapa
+:root {
+  @each $name, $value in $colors {
+    --#{$name}: #{$value};
+  }
+}
+
+.logout-container {
+  min-height: 100vh;
+  @include flex-center;
+  background: var(--background);
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at center, transparent 0%, transparent 50%, var(--primary-light) 100%);
+    animation: rotate 30s linear infinite;
+    z-index: 1;
+    opacity: 0.3;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent 65%, var(--primary-light) 100%);
+    z-index: 2;
+    opacity: 0.2;
+  }
+
+  // Partículas estilizadas
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--primary-light);
+    pointer-events: none;
+    z-index: 2;
+    
+    &:nth-child(1) {
+      width: 100px;
+      height: 100px;
+      top: 10%;
+      left: 10%;
+      animation: float 15s infinite ease-in-out;
+      opacity: 0.5;
+    }
+    
+    &:nth-child(2) {
+      width: 80px;
+      height: 80px;
+      top: 20%;
+      right: 15%;
+      animation: float 20s infinite ease-in-out;
+      animation-delay: -4s;
+      opacity: 0.4;
+    }
+    
+    &:nth-child(3) {
+      width: 60px;
+      height: 60px;
+      bottom: 15%;
+      left: 15%;
+      animation: float 18s infinite ease-in-out;
+      animation-delay: -7s;
+      opacity: 0.3;
+    }
+    
+    &:nth-child(4) {
+      width: 40px;
+      height: 40px;
+      bottom: 30%;
+      right: 20%;
+      animation: float 22s infinite ease-in-out;
+      animation-delay: -10s;
+      opacity: 0.2;
+    }
+    
+    &:nth-child(5) {
+      width: 70px;
+      height: 70px;
+      top: 40%;
+      left: 30%;
+      animation: float 25s infinite ease-in-out;
+      animation-delay: -5s;
+      opacity: 0.3;
+    }
+  }
+
+  .logout-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(220, 38, 38, 0.2);
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--card-border);
+    @include animation(fadeIn, 0.5s, ease-out);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: -10%;
+      width: 120%;
+      height: 120%;
+      background: radial-gradient(ellipse at center, var(--primary-light) 0%, transparent 60%);
+      opacity: 0.2;
+      z-index: -1;
+      animation: pulse 8s ease-in-out infinite;
+    }
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(220, 38, 38, 0.3);
+    }
+
+    .icon {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      @include animation(fadeInDown, 0.8s, ease-out);
+
+      svg {
+        width: 70px;
+        height: 70px;
+      }
+    }
+
+    h1 {
+      color: var(--text-light);
+      margin: 0 0 1rem 0;
+      font-size: 2rem;
+      font-weight: 600;
+      @include animation(slideDownFade, 0.6s, ease-out);
+      position: relative;
+      display: inline-block;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: linear-gradient(to right, transparent, var(--primary), transparent);
+        transform: translateX(-50%);
+        animation: expandWidth 1.5s ease-in-out forwards;
+        animation-delay: 0.5s;
+      }
+    }
+
+    p {
+      color: var(--text-muted);
+      margin: 0 0 2rem 0;
+      font-size: 1.1rem;
+      animation: fadeIn 0.8s ease-out;
+      animation-delay: 0.3s;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-top: 4px solid var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+  }
+
+  .logo-container {
+    @include flex-center;
+    margin-bottom: 24px;
+    @include animation(fadeInDown, 0.8s, ease-out);
+    position: relative;
+    z-index: 10;
+  }
+  
+  .default-logo {
+    @include flex-center;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    color: var(--primary);
+    animation: pulse 3s infinite;
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+  }
+
+  .footer-message {
+    color: var(--text-muted);
+    margin-top: 24px;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeIn 0.5s ease-out forwards;
+    animation-delay: 1s;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDownFade {
+  from {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expandWidth {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// Responsividade
+@media (max-width: 768px) {
+  .logout-container {
+    padding: 1rem;
+    
+    .logout-card {
+      padding: 2rem;
+      margin: 1rem;
+      max-width: 100%;
+    }
+
+    .logo-container {
+      margin-bottom: 16px;
+    }
+    
+    .default-logo {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .footer-message {
+      margin-top: 16px;
+    }
+  }
+} 

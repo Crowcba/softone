@@ -1,0 +1,141 @@
+.formGroup {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.formGroup label {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.required {
+  color: #ff9800;
+}
+
+.prescriberSearch {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: #1e2330;
+  color: #ffffff;
+}
+
+.input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.input:disabled {
+  background-color: #263141;
+  cursor: not-allowed;
+}
+
+.input::placeholder {
+  color: #aaa;
+}
+
+.loadingIndicator {
+  position: absolute;
+  right: 10px;
+  top: 36px;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(74, 144, 226, 0.2);
+  border-radius: 50%;
+  border-top-color: #4a90e2;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.errorMessage {
+  margin-top: 5px;
+  color: #ff5252;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.manualEntryButton {
+  background: none;
+  border: none;
+  color: #4a90e2;
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+}
+
+.prescriberDropdown {
+  position: absolute;
+  z-index: 10;
+  width: 100%;
+  max-height: 250px;
+  overflow-y: auto;
+  background-color: #1e2330;
+  border: 1px solid #444;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  margin-top: 2px;
+  top: 66px;
+}
+
+.prescriberOption {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #333;
+  transition: background-color 0.2s;
+  font-size: 14px;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prescriberOption:last-child {
+  border-bottom: none;
+}
+
+.prescriberOption:hover {
+  background-color: #2a3342;
+}
+
+.prescriberName {
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+}
+
+.prescriberDetails {
+  display: flex;
+  font-size: 12px;
+  color: #666;
+  margin-top: 3px;
+}
+
+.prescriberCRM {
+  margin-right: 10px;
+}
+
+.prescriberSpecialty {
+  font-style: italic;
+} 

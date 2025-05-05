@@ -1,0 +1,26 @@
+> Ready on http://localhost:\\.\pipe\c6c0ee41-24fe-4305-8765-e0e4194118c6
+ ○ Compiling /mods/login ...
+ ✓ Compiled /mods/login in 3.4s (693 modules)
+Interceptors do axios configurados com sucesso
+=================================================
+Módulo de autenticação inicializado.
+Token disponível: false
+=================================================
+ ○ Compiling /favicon.ico ...
+ ✓ Compiled /favicon.ico in 528ms (421 modules)
+ ○ Compiling /mods/home ...
+ ✓ Compiled /mods/home in 3.7s (744 modules)
+ ○ Compiling /mods/visits/home ...
+ ✓ Compiled /mods/visits/home in 1356ms (779 modules)
+ ○ Compiling /mods/visits/agenda ...
+ ✓ Compiled /mods/visits/agenda in 1652ms (858 modules)
+ ○ Compiling /mods/visits/agenda/register ...
+ ✓ Compiled /mods/visits/agenda/register in 1484ms (867 modules)
+Interceptors do axios configurados com sucesso
+=================================================
+Módulo de autenticação inicializado.
+Token disponível: false
+=================================================
+[AddressProfessionalLinksService] Inicializando serviço de vínculos entre endereços e profissionais
+[AddressProfessionalLinksService] Autenticação disponível: false
+ ✓ Compiled /favicon.ico in 381ms (502 modules)

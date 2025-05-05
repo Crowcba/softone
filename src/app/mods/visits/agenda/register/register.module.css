@@ -1,0 +1,270 @@
+.container {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #121212;
+  color: #f3f4f6;
+  border-radius: 0.5rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #f3f4f6;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.cancelButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid #4b5563;
+  border-radius: 0.375rem;
+  background-color: transparent;
+  color: #d1d5db;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.cancelButton:hover:not(:disabled) {
+  background-color: #374151;
+  color: #f3f4f6;
+}
+
+.submitButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.375rem;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: #2563eb;
+}
+
+.submitButton:disabled,
+.cancelButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.error {
+  margin-bottom: 1rem;
+  padding: 0.75rem;
+  border-radius: 0.375rem;
+  background-color: rgba(220, 38, 38, 0.2);
+  color: #fca5a5;
+  font-size: 0.875rem;
+  border: 1px solid rgba(220, 38, 38, 0.3);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.section {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #e5e7eb;
+  margin-bottom: 1.5rem;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #d1d5db;
+}
+
+.input,
+.select,
+.textarea {
+  padding: 0.5rem;
+  border: 1px solid #4b5563;
+  background-color: #2d3748;
+  color: #f3f4f6;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  width: 100%;
+  transition: all 0.2s;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.selectSearch {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #1f2937;
+  border: 1px solid #374151;
+  border-radius: 0.375rem;
+  margin-top: 0.25rem;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 50;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+
+.option {
+  padding: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #d1d5db;
+}
+
+.option:hover {
+  background-color: #374151;
+  color: #f3f4f6;
+}
+
+.linkedLocation {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #374151;
+  border-radius: 0.375rem;
+  background-color: #1f2937;
+}
+
+.locationInfo {
+  flex: 1;
+  font-size: 0.875rem;
+  color: #d1d5db;
+}
+
+.changeLocationButton {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #4b5563;
+  border-radius: 0.25rem;
+  background-color: #374151;
+  color: #d1d5db;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.changeLocationButton:hover {
+  background-color: #4b5563;
+  color: #f3f4f6;
+}
+
+.loadingText {
+  font-size: 0.875rem;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.infoText {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
+
+.dateInputContainer {
+  position: relative;
+}
+
+.dateDisplay {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.75rem;
+  color: #9ca3af;
+}
+
+.periodRadio {
+  display: flex;
+  gap: 1rem;
+}
+
+.radioGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.radioGroup input[type="radio"] {
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid #4b5563;
+  border-radius: 50%;
+  cursor: pointer;
+  accent-color: #3b82f6;
+}
+
+.radioLabel {
+  font-size: 0.875rem;
+  color: #d1d5db;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+} 

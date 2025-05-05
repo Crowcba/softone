@@ -1,0 +1,4 @@
+private bool VisitasAgendumExists(int id)
+{
+    return _context.VisitasAgenda.Any(e => e.Id == id);
+}

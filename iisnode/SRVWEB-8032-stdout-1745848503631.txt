@@ -1,0 +1,11 @@
+> Ready on http://localhost:\\.\pipe\705f21ef-0e5d-46cd-950e-92cd052a32d3
+ ○ Compiling / ...
+ ✓ Compiled / in 2.8s (470 modules)
+ ○ Compiling /mods/login ...
+ ✓ Compiled /mods/login in 2.8s (709 modules)
+Interceptors do axios configurados com sucesso
+=================================================
+Módulo de autenticação inicializado.
+Token disponível: false
+=================================================
+ ✓ Compiled in 1255ms (694 modules)

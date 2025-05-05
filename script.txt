@@ -1,0 +1,320 @@
+-- Script para extrair informações completas sobre as tabelas relacionadas a Visitas/Agendas
+-- Gera informações estruturais sem expor dados sensíveis
+
+-- 1. Informações sobre a tabela VisitasAgendas (ou similar)
+SELECT 
+    t.name AS Tabela,
+    c.name AS Coluna, 
+    ty.name AS Tipo,
+    c.max_length AS Tamanho,
+    c.precision AS Precisao,
+    c.scale AS Escala,
+    c.is_nullable AS Permite_Nulo,
+    c.is_identity AS Is_Identity,
+    ISNULL(dc.definition, '') AS Valor_Padrao
+FROM sys.tables t
+INNER JOIN sys.columns c ON t.object_id = c.object_id
+INNER JOIN sys.types ty ON c.user_type_id = ty.user_type_id
+LEFT JOIN sys.default_constraints dc ON c.default_object_id = dc.object_id
+WHERE t.name LIKE '%Visitas%' OR t.name LIKE '%Agenda%'
+ORDER BY t.name, c.column_id;
+
+-- 2. Chaves Primárias
+SELECT 
+    t.name AS Tabela, 
+    i.name AS Indice,
+    c.name AS Coluna_Chave_Primaria
+FROM sys.tables t
+INNER JOIN sys.indexes i ON t.object_id = i.object_id
+INNER JOIN sys.index_columns ic ON i.object_id = ic.object_id AND i.index_id = ic.index_id
+INNER JOIN sys.columns c ON ic.object_id = c.object_id AND ic.column_id = c.column_id
+WHERE i.is_primary_key = 1
+AND (t.name LIKE '%Visitas%' OR t.name LIKE '%Agenda%' OR t.name LIKE '%Profissional%' OR t.name LIKE '%Endereco%')
+ORDER BY t.name, ic.key_ordinal;
+
+-- 3. Chaves Estrangeiras
+SELECT 
+    fk.name AS FK_Nome,
+    t1.name AS Tabela_Origem,
+    c1.name AS Coluna_Origem,
+    t2.name AS Tabela_Referenciada,
+    c2.name AS Coluna_Referenciada
+FROM sys.foreign_keys fk
+INNER JOIN sys.tables t1 ON fk.parent_object_id = t1.object_id
+INNER JOIN sys.tables t2 ON fk.referenced_object_id = t2.object_id
+INNER JOIN sys.foreign_key_columns fkc ON fk.object_id = fkc.constraint_object_id
+INNER JOIN sys.columns c1 ON fkc.parent_object_id = c1.object_id AND fkc.parent_column_id = c1.column_id
+INNER JOIN sys.columns c2 ON fkc.referenced_object_id = c2.object_id AND fkc.referenced_column_id = c2.column_id
+WHERE t1.name LIKE '%Visitas%' OR t1.name LIKE '%Agenda%' OR t2.name LIKE '%Visitas%' OR t2.name LIKE '%Agenda%'
+ORDER BY t1.name, fk.name;
+
+-- 4. Constraints de Verificação (Check Constraints)
+SELECT 
+    t.name AS Tabela,
+    cc.name AS Constraint_Nome,
+    cc.definition AS Constraint_Definicao
+FROM sys.check_constraints cc
+INNER JOIN sys.tables t ON cc.parent_object_id = t.object_id
+WHERE t.name LIKE '%Visitas%' OR t.name LIKE '%Agenda%' OR t.name LIKE '%Profissional%'
+ORDER BY t.name, cc.name;
+
+-- 5. Detalhes da tabela de Profissionais/Prescritores
+SELECT 
+    t.name AS Tabela,
+    c.name AS Coluna, 
+    ty.name AS Tipo,
+    c.max_length AS Tamanho,
+    c.is_nullable AS Permite_Nulo,
+    c.is_identity AS Is_Identity,
+    ISNULL(dc.definition, '') AS Valor_Padrao
+FROM sys.tables t
+INNER JOIN sys.columns c ON t.object_id = c.object_id
+INNER JOIN sys.types ty ON c.user_type_id = ty.user_type_id
+LEFT JOIN sys.default_constraints dc ON c.default_object_id = dc.object_id
+WHERE t.name LIKE '%Profissional%' OR t.name LIKE '%Prescritor%'
+ORDER BY t.name, c.column_id;
+
+-- 6. Detalhes da tabela de Endereços/Locais
+SELECT 
+    t.name AS Tabela,
+    c.name AS Coluna, 
+    ty.name AS Tipo,
+    c.max_length AS Tamanho,
+    c.is_nullable AS Permite_Nulo,
+    c.is_identity AS Is_Identity,
+    ISNULL(dc.definition, '') AS Valor_Padrao
+FROM sys.tables t
+INNER JOIN sys.columns c ON t.object_id = c.object_id
+INNER JOIN sys.types ty ON c.user_type_id = ty.user_type_id
+LEFT JOIN sys.default_constraints dc ON c.default_object_id = dc.object_id
+WHERE t.name LIKE '%Origem%' OR t.name LIKE '%Destino%' OR t.name LIKE '%Endereco%' OR t.name LIKE '%Local%'
+ORDER BY t.name, c.column_id;
+
+-- 7. Procedimentos Armazenados relacionados a Visitas
+SELECT 
+    name AS Procedimento,
+    OBJECT_DEFINITION(object_id) AS Definicao
+FROM sys.procedures 
+WHERE name LIKE '%Visitas%' OR name LIKE '%Agenda%'
+ORDER BY name;
+
+-- 8. Gatilhos (Triggers) nas tabelas de Visitas
+SELECT 
+    tr.name AS Trigger_Nome,
+    t.name AS Tabela,
+    OBJECT_DEFINITION(tr.object_id) AS Trigger_Definicao
+FROM sys.triggers tr
+INNER JOIN sys.tables t ON tr.parent_id = t.object_id
+WHERE t.name LIKE '%Visitas%' OR t.name LIKE '%Agenda%'
+ORDER BY t.name, tr.name;
+
+
+
+
+
+
+
+cadastro_convenio_venda_endereco	PK__cadastro__3213E83F0FA29C2C	id
+cadastro_fornecedor_endereco	PK__cadastro__3213E83F9DF0E221	id
+cadastro_licitante_endereco	PK__cadastro__3213E83F32047D6A	id
+cliente_endereco	PK__cliente___3213E83F4585702C	id
+visitas_agenda	PK_visitas_agenda	id
+visitas_local_prescritores_lista	PK_visitas_local_prescritores_lista	Id
+visitas_motivo	PK_visitas_motivo	id_motivo
+visitas_origem_destino	PK_visitas_origem_destino	id_origem_destino
+visitas_paciente	PK_visitas_paciente	id_paciente
+visitas_paciente_antropometrica	PK_visitas_paciente_antropometrica	id_antropometrica
+visitas_paciente_bioquimica	PK_visitas_paciente_bioquimica	id_bioquimica
+visitas_profissional	PK_visitas_profissional	id_profissional
+visitas_profissional_casa	PK_visitas_profissional_casa	id_casa
+visitas_profissional_escritorio	PK_visitas_profissional_escritorio	id_escritorio
+visitas_profissional_local_de_atendimento	PK_visitas_profissional_local_de_atendimento	id_local_de_atendimento
+visitas_profissional_telefone	PK_visitas_profissional_telefone	id_telefone
+visitas_rotas	PK_visitas_rotas	id
+visitas_veiculo	PK_visitas_veiculo	id_veiculo
+visitas_visita_origem_destino	PK_visitas_visitas	id_origem_destino_origem_destino
+visitas_visita_paciente	PK_visitas_visita_paciente	id_paciente_paciente
+visitas_visita_profissional	PK_visitas_visita_profissional	id_profissional_profissional
+vista_local_profissional	PK_vista_local_profissional	id
+
+
+
+FK__cliente__id_prof__37B03374	cliente	id_profissional	visitas_profissional	id_profissional
+FK_FaturasFechada_Paciente	faturas_fechadas	id_paciente	visitas_paciente	id_paciente
+FK_producao_pedido_paciente	producao_pedido	id_paciente	visitas_paciente	id_paciente
+
+
+Tabela em branco 
+
+
+
+visitas_local_prescritores_lista	Id	int	4	0	1	
+visitas_local_prescritores_lista	descricao	varchar	50	1	0	
+visitas_local_prescritores_lista	id_prescritor	int	4	0	0	
+visitas_local_prescritores_lista	id_local	int	4	0	0	
+visitas_local_prescritores_lista	controlador	int	4	0	0	
+visitas_local_prescritores_lista	id_usuario	nvarchar	256	0	0	
+visitas_prescritores_lista	id	int	4	0	0	
+visitas_prescritores_lista	id_prescritor	int	4	0	0	
+visitas_prescritores_lista	id_lista	int	4	0	0	
+visitas_profissional	id_profissional	int	4	0	1	
+visitas_profissional	nome_profissional	varchar	-1	1	0	
+visitas_profissional	sexo_profissional	varchar	-1	1	0	
+visitas_profissional	data_nascimento_profissional	date	3	1	0	
+visitas_profissional	profissao_profissional	varchar	-1	1	0	
+visitas_profissional	especialidade_profissional	varchar	-1	1	0	
+visitas_profissional	Conselho_profissional	varchar	-1	1	0	
+visitas_profissional	numero_conselho_profissional	varchar	-1	1	0	
+visitas_profissional	email_profissional	varchar	-1	1	0	
+visitas_profissional	id_promotor	varchar	-1	1	0	
+visitas_profissional	id_conselho	int	4	1	0	
+visitas_profissional	id_estado_conselho	int	4	1	0	
+visitas_profissional	frequencia_visita	int	4	1	0	
+visitas_profissional	status	bit	1	1	0	
+visitas_profissional	tipo_visita	int	4	1	0	
+visitas_profissional_casa	id_casa	int	4	0	1	
+visitas_profissional_casa	id_profissional	int	4	0	0	
+visitas_profissional_casa	endereco_casa	varchar	-1	1	0	
+visitas_profissional_casa	bairro_casa	varchar	-1	1	0	
+visitas_profissional_casa	cidade_casa	varchar	-1	1	0	
+visitas_profissional_casa	uf_casa	varchar	-1	1	0	
+visitas_profissional_casa	cep_casa	varchar	-1	1	0	
+visitas_profissional_escritorio	id_escritorio	int	4	0	1	
+visitas_profissional_escritorio	id_profissional	int	4	0	0	
+visitas_profissional_escritorio	endereco_escritorio	varchar	-1	1	0	
+visitas_profissional_escritorio	bairro_escritorio	varchar	-1	1	0	
+visitas_profissional_escritorio	cidade_escritorio	varchar	-1	1	0	
+visitas_profissional_escritorio	uf_escritorio	varchar	-1	1	0	
+visitas_profissional_escritorio	cep_escritorio	varchar	-1	1	0	
+visitas_profissional_escritorio	Tipo	varchar	50	1	0	
+visitas_profissional_local_de_atendimento	id_local_de_atendimento	int	4	0	1	
+visitas_profissional_local_de_atendimento	id_profissional	int	4	0	0	
+visitas_profissional_local_de_atendimento	local_local_de_atendimento	varchar	-1	1	0	
+visitas_profissional_local_de_atendimento	dias_da_semana_local_de_atendimento	varchar	-1	1	0	
+visitas_profissional_local_de_atendimento	periodo_local_de_atendimento	varchar	-1	1	0	
+visitas_profissional_local_de_atendimento	observacao_local_de_atendimento	varchar	-1	1	0	
+visitas_profissional_local_de_atendimento	dias_antendimento	varchar	50	1	0	
+visitas_profissional_local_de_atendimento	priodo_atendimento	int	4	1	0	
+visitas_profissional_telefone	id_telefone	int	4	0	1	
+visitas_profissional_telefone	id_profissional	int	4	0	0	
+visitas_profissional_telefone	numero_telefone	varchar	-1	1	0	
+visitas_profissional_telefone	nome_da_secretaria_telefone	varchar	-1	1	0	
+visitas_profissional_telefone	principal	bit	1	1	0	
+visitas_profissional_telefone	wathsapp	bit	1	1	0	
+visitas_vinculo_endereco_profissional	id	int	4	0	1	
+visitas_vinculo_endereco_profissional	id_profissional	int	4	0	0	
+visitas_vinculo_endereco_profissional	id_origem_destino_origem_destino	int	4	0	0	
+visitas_vinculo_endereco_profissional	id_usuario	nvarchar	256	1	0	
+visitas_visita_profissional	id_profissional_profissional	int	4	0	1	
+visitas_visita_profissional	motivo_profissional	varchar	-1	1	0	
+visitas_visita_profissional	id_profissional	int	4	0	0	
+visitas_visita_profissional	km_inicial_profissional	varchar	-1	1	0	
+visitas_visita_profissional	km_final_profissional	varchar	-1	1	0	
+visitas_visita_profissional	km_rodada_profissional	varchar	-1	1	0	
+visitas_visita_profissional	placa_carro_profissional	varchar	-1	1	0	
+visitas_visita_profissional	observacao_profissional	varchar	-1	1	0	
+visitas_visita_profissional	data_visita_profissional	date	3	1	0	
+visitas_visita_profissional	periodo_visitado_profissional	varchar	-1	1	0	
+visitas_visita_profissional	quem_visitou_profissional	varchar	-1	1	0	
+vista_local_profissional	id	int	4	0	1	
+vista_local_profissional	local	int	4	0	0	
+vista_local_profissional	visita_profissional	int	4	0	0	
+vista_local_profissional	fixar	bit	1	0	0	
+vista_local_profissional	data	date	3	0	0	
+vista_local_profissional	id_usuario	nvarchar	256	0	0	
+
+
+
+
+bomba_local	id_local	int	4	0	1	
+bomba_local	nome_local	varchar	-1	1	0	
+bomba_local	endereco_local	varchar	-1	1	0	
+bomba_local	cpf_cnpj_local	varchar	-1	1	0	
+bomba_local	responsavel_local	varchar	-1	1	0	
+bomba_local	cpf_responsavel_local	varchar	-1	1	0	
+bomba_local	referencia_local	varchar	-1	1	0	
+cadastro_convenio_venda_endereco	id	int	4	0	1	
+cadastro_convenio_venda_endereco	cadastro_convenio_venda_id	int	4	0	0	
+cadastro_convenio_venda_endereco	cadastro_municipio_id	int	4	0	0	
+cadastro_convenio_venda_endereco	cep	varchar	8	0	0	
+cadastro_convenio_venda_endereco	logradouro	varchar	255	0	0	
+cadastro_convenio_venda_endereco	numero	varchar	10	0	0	
+cadastro_convenio_venda_endereco	complemento	varchar	255	1	0	
+cadastro_convenio_venda_endereco	bairro	varchar	255	0	0	
+cadastro_fornecedor_endereco	id	int	4	0	1	
+cadastro_fornecedor_endereco	cadastro_fornecedor_id	int	4	0	0	
+cadastro_fornecedor_endereco	cadastro_municipio_id	int	4	0	0	
+cadastro_fornecedor_endereco	cep	varchar	8	0	0	
+cadastro_fornecedor_endereco	logradouro	varchar	255	0	0	
+cadastro_fornecedor_endereco	numero	varchar	10	0	0	
+cadastro_fornecedor_endereco	complemento	varchar	255	1	0	
+cadastro_fornecedor_endereco	bairro	varchar	255	0	0	
+cadastro_licitante_endereco	id	int	4	0	1	
+cadastro_licitante_endereco	cadastro_licitante_id	int	4	0	0	
+cadastro_licitante_endereco	cadastro_municipio_id	int	4	0	0	
+cadastro_licitante_endereco	cep	varchar	8	0	0	
+cadastro_licitante_endereco	logradouro	varchar	255	0	0	
+cadastro_licitante_endereco	numero	varchar	10	0	0	
+cadastro_licitante_endereco	complemento	varchar	255	1	0	
+cadastro_licitante_endereco	bairro	varchar	255	0	0	
+cliente_endereco	id	int	4	0	1	
+cliente_endereco	cliente_id	int	4	0	0	
+cliente_endereco	cadastro_municipio_id	int	4	0	0	
+cliente_endereco	cep	varchar	8	0	0	
+cliente_endereco	logradouro	varchar	255	0	0	
+cliente_endereco	numero	varchar	10	0	0	
+cliente_endereco	complemento	varchar	255	1	0	
+cliente_endereco	bairro	varchar	255	0	0	
+visitas_local_prescritores_lista	Id	int	4	0	1	
+visitas_local_prescritores_lista	descricao	varchar	50	1	0	
+visitas_local_prescritores_lista	id_prescritor	int	4	0	0	
+visitas_local_prescritores_lista	id_local	int	4	0	0	
+visitas_local_prescritores_lista	controlador	int	4	0	0	
+visitas_local_prescritores_lista	id_usuario	nvarchar	256	0	0	
+visitas_origem_destino	id_origem_destino	int	4	0	1	
+visitas_origem_destino	local_de_atendimento_origem_destino	varchar	-1	1	0	
+visitas_origem_destino	endereco_origem_destino	varchar	-1	1	0	
+visitas_origem_destino	bairro_origem_destino	varchar	-1	1	0	
+visitas_origem_destino	cidade_origem_destino	varchar	-1	1	0	
+visitas_origem_destino	uf_origem_destino	varchar	-1	1	0	
+visitas_origem_destino	cep_origem_destino	varchar	-1	1	0	
+visitas_origem_destino	telefone_origem_destino	varchar	-1	1	0	
+visitas_origem_destino	numero_origem_destino	varchar	8	1	0	
+visitas_origem_destino	id_vistas_profissional	int	4	1	0	
+visitas_origem_destino	status	bit	1	1	0	
+visitas_profissional_local_de_atendimento	id_local_de_atendimento	int	4	0	1	
+visitas_profissional_local_de_atendimento	id_profissional	int	4	0	0	
+visitas_profissional_local_de_atendimento	local_local_de_atendimento	varchar	-1	1	0	
+visitas_profissional_local_de_atendimento	dias_da_semana_local_de_atendimento	varchar	-1	1	0	
+visitas_profissional_local_de_atendimento	periodo_local_de_atendimento	varchar	-1	1	0	
+visitas_profissional_local_de_atendimento	observacao_local_de_atendimento	varchar	-1	1	0	
+visitas_profissional_local_de_atendimento	dias_antendimento	varchar	50	1	0	
+visitas_profissional_local_de_atendimento	priodo_atendimento	int	4	1	0	
+visitas_vinculo_endereco_profissional	id	int	4	0	1	
+visitas_vinculo_endereco_profissional	id_profissional	int	4	0	0	
+visitas_vinculo_endereco_profissional	id_origem_destino_origem_destino	int	4	0	0	
+visitas_vinculo_endereco_profissional	id_usuario	nvarchar	256	1	0	
+visitas_visita_origem_destino	id_origem_destino_origem_destino	int	4	0	1	
+visitas_visita_origem_destino	motivo_origem_destino	varchar	-1	1	0	
+visitas_visita_origem_destino	id_local_origem_origem	int	4	0	0	
+visitas_visita_origem_destino	id_local_destino_destino	int	4	0	0	
+visitas_visita_origem_destino	km_inicial_origem_destino	real	4	1	0	
+visitas_visita_origem_destino	km_final_origem_destino	real	4	1	0	
+visitas_visita_origem_destino	km_rodada_origem_destino	real	4	1	0	
+visitas_visita_origem_destino	placa_carro_origem_destino	varchar	-1	1	0	
+visitas_visita_origem_destino	observacao_origem_destino	varchar	-1	1	0	
+visitas_visita_origem_destino	data_visita_origem_destino	date	3	1	0	
+visitas_visita_origem_destino	periodo_visitado_origem_destino	varchar	-1	1	0	
+visitas_visita_origem_destino	quem_visitou_origem_destino	varchar	-1	1	0	
+visitas_visita_origem_destino	profissionais	varchar	-1	1	0	
+vista_local_profissional	id	int	4	0	1	
+vista_local_profissional	local	int	4	0	0	
+vista_local_profissional	visita_profissional	int	4	0	0	
+vista_local_profissional	fixar	bit	1	0	0	
+vista_local_profissional	data	date	3	0	0	
+vista_local_profissional	id_usuario	nvarchar	256	0	0	
+
+
+
+
+Tabela em branco 	

@@ -1,0 +1,288 @@
+.detailsContainer {
+  background-color: #1f2937;
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 20px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  color: #60a5fa;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 8px;
+}
+
+.backButton:hover {
+  color: #93c5fd;
+}
+
+.title {
+  color: #fff;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.editButton, .statusButton {
+  padding: 8px 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background-color 0.2s;
+}
+
+.editButton {
+  background-color: #2563eb;
+  color: white;
+}
+
+.editButton:hover {
+  background-color: #1d4ed8;
+}
+
+.statusButton {
+  padding: 8px 16px;
+  border-radius: 6px;
+}
+
+.statusButton.active {
+  background-color: #059669;
+  color: white;
+}
+
+.statusButton.inactive {
+  background-color: #dc2626;
+  color: white;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.section {
+  background-color: #374151;
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.sectionTitle {
+  color: #fff;
+  font-size: 1.125rem;
+  margin: 0 0 16px 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+.field p {
+  color: #fff;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  color: #fff;
+}
+
+.contactsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.contactCard {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  padding: 16px;
+  transition: all 0.2s ease;
+}
+
+.contactCard:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.contactMain {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.phoneNumber {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #212529;
+}
+
+.contactBadges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.primaryBadge {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.whatsappBadge {
+  background-color: #25D366;
+  color: white;
+}
+
+.secretaryName {
+  font-size: 0.9rem;
+  color: #6c757d;
+  margin-top: 8px;
+}
+
+.loadingText {
+  color: #666;
+  text-align: center;
+  padding: 1rem;
+}
+
+.noContacts {
+  color: #6c757d;
+  text-align: center;
+  padding: 24px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  border: 1px dashed #dee2e6;
+}
+
+.noLocation {
+  color: #666;
+  font-style: italic;
+  padding: 1rem;
+  text-align: center;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  margin: 1rem 0;
+}
+
+.whatsappButton {
+  background: #25D366;
+  border: none;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: all 0.2s ease;
+  padding: 6px;
+}
+
+.whatsappButton:hover {
+  background: #128C7E;
+  transform: scale(1.1);
+}
+
+.whatsappButton svg {
+  color: white;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+  .contactsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.navigationButtons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.navigationButton {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navigationButton:first-child {
+  background-color: #4285f4;
+  color: white;
+}
+
+.navigationButton:last-child {
+  background-color: #33c5ff;
+  color: white;
+}
+
+.navigationButton:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.mapsButton {
+  background-color: #4285F4;
+}
+
+.mapsButton:hover {
+  background-color: #3367D6;
+  transform: translateY(-2px);
+}
+
+.wazeButton {
+  background-color: #33CCFF;
+}
+
+.wazeButton:hover {
+  background-color: #00B3E3;
+  transform: translateY(-2px);
+} 

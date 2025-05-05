@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Importações do PrimeReact */
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 248, 250, 252;
+  --background-end-rgb: 255, 255, 255;
+  --font-geist-sans: var(--font-geist-sans);
+  --font-geist-mono: var(--font-geist-mono);
+}
+
+/* Modo escuro - pode ser ativado posteriormente */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 15, 23, 42;
+    --background-end-rgb: 30, 41, 59;
+  }
+}
+
+html,
+body {
+  font-family: var(--font-geist-sans);
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      rgb(var(--background-start-rgb)),
+      rgb(var(--background-end-rgb))
+    )
+    fixed;
+}
+
+/* Animação de entrada para alertas */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* Estilo básico para spinner de carregamento */
+.spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Componentes básicos de formulário */
+input, textarea, select, button {
+  font-family: var(--font-geist-sans);
+}
+
+/* Estilos personalizados para o PrimeReact no tema escuro */
+.dark-theme-select .p-multiselect-label {
+  color: white;
+}
+
+.dark-theme-select .p-multiselect-trigger {
+  color: white;
+}
+
+.dark-theme-select.p-multiselect.p-multiselect-chip .p-multiselect-token {
+  background-color: #008C45;
+  color: white;
+}
+
+.p-multiselect-panel .p-multiselect-items .p-multiselect-item {
+  color: white;
+}
+
+.p-multiselect-panel .p-multiselect-items .p-multiselect-item:hover {
+  background-color: #2d2d2d;
+}
+
+.p-multiselect-panel .p-multiselect-items .p-multiselect-item.p-highlight {
+  background-color: #008C45;
+}
+
+.p-multiselect-panel .p-multiselect-header .p-multiselect-filter-container .p-inputtext {
+  background-color: #444;
+  color: white;
+  border-color: #555;
+}

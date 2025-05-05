@@ -1,0 +1,384 @@
+// Variables
+$primary-blue: #4285F4;
+$primary-blue-dark: #3367D6;
+$waze-blue: #33CCFF;
+$waze-blue-dark: #00B3E3;
+
+// System Colors - Dark Theme
+$background-color: #1A202C;
+$card-background: #2D3748;
+$border-color: #4A5568;
+$text-primary: #F7FAFC;
+$text-secondary: #E2E8F0;
+$text-muted: #A0AEC0;
+
+// Accent Colors
+$accent-blue: #4299E1;
+$accent-blue-light: rgba(66, 153, 225, 0.15);
+$accent-gray: #718096;
+$accent-gray-light: #2D3748;
+$hover-background: #3A4659;
+
+.pageContainer {
+  min-height: 100vh;
+  background-color: $background-color;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: $card-background;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  border: 1px solid $border-color;
+
+  h1 {
+    color: $text-primary;
+    font-size: 1.8rem;
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .headerActions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+.detailsContainer {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: $card-background;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  border: 1px solid $border-color;
+}
+
+.mainInfo {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  .detailItem {
+    background: $accent-gray-light;
+    border: 1px solid $border-color;
+    padding: 1rem;
+    border-radius: 6px;
+
+    label {
+      color: $text-secondary;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    span {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: $text-primary;
+    }
+  }
+}
+
+.localSection {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: $card-background;
+  border-radius: 8px;
+  border: 1px solid $border-color;
+
+  h3 {
+    color: $text-primary;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 1.3rem;
+      background-color: $accent-blue;
+      border-radius: 2px;
+    }
+  }
+
+  .navigationButtons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid $border-color;
+  }
+}
+
+.detailsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+
+  .detailItem {
+    background: $accent-gray-light;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid $border-color;
+
+    label {
+      display: block;
+      font-weight: 500;
+      color: $text-secondary;
+      margin-bottom: 0.5rem;
+      font-size: 0.9rem;
+    }
+
+    span {
+      color: $text-primary;
+      font-size: 1rem;
+    }
+  }
+}
+
+.navigationButton {
+  padding: 0.7rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: white;
+  font-size: 0.875rem;
+  min-width: 140px;
+  justify-content: center;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &.mapsButton {
+    background-color: $primary-blue;
+
+    &:hover {
+      background-color: $primary-blue-dark;
+    }
+  }
+
+  &.wazeButton {
+    background-color: $waze-blue;
+
+    &:hover {
+      background-color: $waze-blue-dark;
+    }
+  }
+}
+
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  background-color: $accent-blue;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-width: 140px;
+  justify-content: center;
+
+  &:hover {
+    background-color: darken($accent-blue, 10%);
+  }
+}
+
+.prescritoresSection {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: $card-background;
+  border-radius: 8px;
+  border: 1px solid $border-color;
+
+  h3 {
+    color: $text-primary;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid $border-color;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 1.3rem;
+      background-color: $accent-blue;
+      border-radius: 2px;
+    }
+  }
+}
+
+.prescriberList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.prescriberItem {
+  background: $accent-gray-light;
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 1.2rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-color: $accent-blue;
+  }
+}
+
+.prescriberInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.prescriberName {
+  color: $text-primary;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: $accent-blue;
+    border-radius: 50%;
+  }
+}
+
+.prescriberDetails {
+  color: $text-secondary;
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.prescriberBadge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.8rem;
+  background-color: $accent-blue-light;
+  color: $accent-blue;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 0.5rem;
+}
+
+.tableContainer {
+  overflow-x: auto;
+  margin-top: 1rem;
+  border-radius: 6px;
+  border: 1px solid $border-color;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: $card-background;
+
+  th {
+    background-color: $accent-gray-light;
+    color: $text-secondary;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid $border-color;
+  }
+
+  td {
+    padding: 1rem;
+    border-bottom: 1px solid $border-color;
+    color: $text-primary;
+  }
+}
+
+.tableRow {
+  &:hover {
+    background-color: $hover-background;
+  }
+}
+
+.newButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.2rem;
+  background-color: $accent-blue;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: darken($accent-blue, 10%);
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-size: 1.2rem;
+  color: $text-muted;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-size: 1.2rem;
+  color: #FEB2B2;
+  background-color: rgba(229, 62, 62, 0.1);
+  border: 1px solid #E53E3E;
+  border-radius: 8px;
+  padding: 1rem;
+  margin: 2rem;
+} 

@@ -1,0 +1,442 @@
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 12px;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.searchContainer {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.newButton {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+    text-decoration: none;
+}
+
+.newButton:hover {
+    background-color: #1d4ed8;
+}
+
+.searchInput {
+    background-color: #444;
+    border: 1px solid #555;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    padding: 12px 16px;
+    min-width: 300px;
+}
+
+.selectInput {
+    background-color: #444;
+    border: 1px solid #555;
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    padding: 12px 16px;
+    min-width: 150px;
+}
+
+.tableContainer {
+    background-color: #1f2937;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableHeader {
+    background-color: #374151;
+}
+
+.tableHeaderCell {
+    padding: 16px;
+    text-align: left;
+    color: #fff;
+    font-weight: 600;
+}
+
+.tableRow {
+    border-bottom: 1px solid #374151;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.tableRow:hover {
+    background-color: #374151;
+}
+
+.tableCell {
+    padding: 16px;
+    color: #fff;
+}
+
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    color: #fff;
+}
+
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+}
+
+.paginationButton {
+    background-color: #374151;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.paginationButton:hover {
+    background-color: #4b5563;
+}
+
+.paginationButton:disabled {
+    background-color: #1f2937;
+    cursor: not-allowed;
+}
+
+.paginationActive {
+    background-color: #2563eb;
+}
+
+.paginationEllipsis {
+    color: #fff;
+    padding: 8px;
+}
+
+.error {
+    color: #ef4444;
+    padding: 1rem;
+    background-color: rgba(239, 68, 68, 0.1);
+    border-radius: 8px;
+    margin: 1rem;
+}
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .searchContainer {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .searchInput {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.2rem;
+    }
+    
+    .tableHeaderCell,
+    .tableCell {
+        padding: 0.5rem;
+    }
+}
+
+.detailsContainer {
+    padding: 20px;
+    background-color: #1e1e1e;
+    border-radius: 16px;
+    margin-top: 20px;
+}
+
+.detailsContainer h2 {
+    color: #e5e5e5;
+    margin-bottom: 24px;
+    font-size: 1.5rem;
+}
+
+.detailsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.detailItem {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    background-color: #2a2a2a;
+    border-radius: 8px;
+}
+
+.detailItem label {
+    color: #a3a3a3;
+    font-size: 0.875rem;
+}
+
+.detailItem span {
+    color: #e5e5e5;
+    font-size: 1rem;
+}
+
+.prescritoresSection {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prescritoresSection h3 {
+    color: #e5e5e5;
+    margin-bottom: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.form {
+    background-color: #1e1e1e;
+    padding: 2rem;
+    border-radius: 16px;
+    margin-top: 2rem;
+}
+
+.formGroup {
+    margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+    display: block;
+    color: #e5e5e5;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.input,
+.select {
+    width: 100%;
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    padding: 0.75rem;
+    color: #e5e5e5;
+    font-size: 1rem;
+}
+
+.input:focus,
+.select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.select[multiple] {
+    height: 200px;
+}
+
+.formActions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.submitButton,
+.cancelButton {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submitButton {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+}
+
+.submitButton:hover {
+    background-color: #1d4ed8;
+}
+
+.cancelButton {
+    background-color: #374151;
+    color: white;
+    border: none;
+}
+
+.cancelButton:hover {
+    background-color: #4b5563;
+}
+
+.prescritoresContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.prescritoresSelected {
+    background-color: #2a2a2a;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #3a3a3a;
+}
+
+.prescritoresSelected h3 {
+    color: #e5e5e5;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+}
+
+.prescritoresSelected ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.prescritoresSelected li {
+    color: #e5e5e5;
+    padding: 0.5rem;
+    border-bottom: 1px solid #3a3a3a;
+    font-size: 0.9rem;
+}
+
+.prescritoresSelected li:last-child {
+    border-bottom: none;
+}
+
+@media (max-width: 768px) {
+    .prescritoresContainer {
+        grid-template-columns: 1fr;
+    }
+}
+
+.noData {
+    color: #a3a3a3;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+.locationSearch {
+    position: relative;
+    width: 100%;
+}
+
+.locationDropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #2a2a2a;
+    border: 1px solid #3a3a3a;
+    border-radius: 8px;
+    margin-top: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.locationOption {
+    padding: 0.75rem 1rem;
+    color: #e5e5e5;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.locationOption:hover {
+    background-color: #3a3a3a;
+}
+
+.locationName {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.locationDetails {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.noResults {
+    padding: 0.75rem 1rem;
+    color: #9ca3af;
+    font-style: italic;
+    text-align: center;
+}
+
+.prescriberItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    background-color: #2a2a2a;
+    border-radius: 6px;
+}
+
+.prescriberInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.prescriberName {
+    font-weight: 500;
+    color: #e5e5e5;
+}
+
+.prescriberDetails {
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+.removeButton {
+    background-color: #374151;
+    border: none;
+    color: #9ca3af;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.removeButton:hover {
+    background-color: #991b1b;
+    color: #fff;
+} 

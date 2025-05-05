@@ -1,0 +1,239 @@
+.pageWrapper {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pageHeader {
+    margin-bottom: 24px;
+}
+
+.pageTitle {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.searchContainer {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.newButton {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.newButton:hover {
+    background-color: #1d4ed8;
+}
+
+.tableContainer {
+    background-color: #1f2937;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableHeader {
+    background-color: #374151;
+}
+
+.tableHeaderCell {
+    padding: 16px;
+    text-align: left;
+    color: #fff;
+    font-weight: 600;
+}
+
+.tableRow {
+    border-bottom: 1px solid #374151;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.tableRow:hover {
+    background-color: #374151;
+}
+
+.tableCell {
+    padding: 16px;
+    color: #fff;
+}
+
+.statusActive {
+    background-color: #059669;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.statusInactive {
+    background-color: #dc2626;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    color: #fff;
+}
+
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+}
+
+.paginationButton {
+    background-color: #374151;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.paginationButton:hover {
+    background-color: #4b5563;
+}
+
+.paginationButton:disabled {
+    background-color: #1f2937;
+    cursor: not-allowed;
+}
+
+.paginationActive {
+    background-color: #2563eb;
+}
+
+.paginationEllipsis {
+    color: #fff;
+    padding: 8px;
+}
+
+.whatsappContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.whatsappNumber {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: #25D366;
+}
+
+.whatsappIcon {
+    flex-shrink: 0;
+}
+
+.loadingCell {
+    color: #666;
+    font-style: italic;
+}
+
+.emptyCell {
+    color: #666;
+    font-style: italic;
+}
+
+.locationCell {
+    color: #fff;
+    display: block;
+    max-width: 250px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Floating action button for mobile */
+.mobileFloatingButton {
+    display: none;
+}
+
+/* Add responsive styles for mobile devices */
+@media (max-width: 768px) {
+    .pageWrapper {
+        padding: 10px;
+    }
+    
+    .searchContainer {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .searchContainer input,
+    .searchContainer select {
+        width: 100%;
+        min-width: unset;
+    }
+    
+    .newButton {
+        display: none;
+    }
+    
+    .mobileFloatingButton {
+        display: block;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        z-index: 100;
+        cursor: pointer;
+        transition: background-color 0.2s, transform 0.2s;
+    }
+    
+    .mobileFloatingButton:hover,
+    .mobileFloatingButton:active {
+        background-color: #1d4ed8;
+        transform: scale(1.05);
+    }
+    
+    .tableContainer {
+        overflow-x: auto;
+    }
+    
+    .table {
+        min-width: 650px;
+    }
+}
+
+/* Additional styles for very small screens */
+@media (max-width: 480px) {
+    .pageTitle {
+        font-size: 20px;
+    }
+} 

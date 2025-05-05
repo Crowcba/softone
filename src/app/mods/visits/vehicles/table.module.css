@@ -1,0 +1,216 @@
+.pageWrapper {
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.pageHeader {
+    margin-bottom: 24px;
+}
+
+.pageTitle {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #fff;
+}
+
+.searchContainer {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.newButton {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s;
+}
+
+.newButton:hover {
+    background-color: #1d4ed8;
+}
+
+.tableContainer {
+    background-color: #1f2937;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tableHeader {
+    background-color: #374151;
+}
+
+.tableHeaderCell {
+    padding: 16px;
+    text-align: left;
+    color: #fff;
+    font-weight: 600;
+}
+
+.tableRow {
+    border-bottom: 1px solid #374151;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.tableRow:hover {
+    background-color: #374151;
+}
+
+.tableCell {
+    padding: 16px;
+    color: #fff;
+}
+
+.statusActive {
+    background-color: #059669;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.statusInactive {
+    background-color: #dc2626;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.875rem;
+}
+
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 200px;
+    color: #fff;
+}
+
+.paginationContainer {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px;
+}
+
+.paginationButton {
+    background-color: #374151;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.paginationButton:hover {
+    background-color: #4b5563;
+}
+
+.paginationButton:disabled {
+    background-color: #1f2937;
+    cursor: not-allowed;
+}
+
+.paginationActive {
+    background-color: #2563eb;
+}
+
+.paginationEllipsis {
+    color: #fff;
+    padding: 8px;
+}
+
+.loadingCell {
+    color: #666;
+    font-style: italic;
+}
+
+.emptyCell {
+    color: #666;
+    font-style: italic;
+}
+
+.detailsContainer {
+    background-color: #1f2937;
+    border-radius: 8px;
+    padding: 24px;
+    color: #fff;
+}
+
+.detailsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.detailsTitle {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.detailsButtons {
+    display: flex;
+    gap: 12px;
+}
+
+.backButton {
+    background-color: #374151;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.2s;
+}
+
+.backButton:hover {
+    background-color: #4b5563;
+}
+
+.editButton {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: background-color 0.2s;
+}
+
+.editButton:hover {
+    background-color: #1d4ed8;
+}
+
+.detailsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.detailsItem {
+    margin-bottom: 16px;
+}
+
+.detailsLabel {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 4px;
+}
+
+.detailsValue {
+    font-size: 1rem;
+}

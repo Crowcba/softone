@@ -1,0 +1,672 @@
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.filterButton {
+  composes: button;
+  background-color: #2563eb;
+  color: white;
+}
+
+.filterButton:hover {
+  background-color: #1d4ed8;
+}
+
+.exportButton {
+  composes: button;
+  background-color: #16a34a;
+  color: white;
+}
+
+.exportButton:hover {
+  background-color: #15803d;
+}
+
+.printButton {
+  composes: button;
+  background-color: #7c3aed;
+  color: white;
+}
+
+.printButton:hover {
+  background-color: #6d28d9;
+}
+
+.filterPanel {
+  background-color: #f3f4f6;
+  border-radius: 0.375rem;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.filterPanelTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.filterGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .filterGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.filterItem {
+  margin-bottom: 0.5rem;
+}
+
+.filterLabel {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.filterInput,
+.filterSelect {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+}
+
+.filterActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.clearButton {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  background-color: white;
+  cursor: pointer;
+}
+
+.applyButton {
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  background-color: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+.reportHeader {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.reportTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.reportDate {
+  color: #6b7280;
+  margin-bottom: 0.25rem;
+}
+
+.reportPeriod {
+  color: #6b7280;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHeader {
+  background-color: #f3f4f6;
+}
+
+.tableCell {
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.tableRow:hover {
+  background-color: #f9fafb;
+}
+
+.error {
+  background-color: #fee2e2;
+  border: 1px solid #f87171;
+  color: #b91c1c;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+.empty {
+  background-color: #fef3c7;
+  border: 1px solid #fbbf24;
+  color: #92400e;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+}
+
+.emptyState {
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.emptyState h2 {
+  font-size: 1.5rem;
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.emptyState p {
+  color: #6b7280;
+  margin-bottom: 2rem;
+}
+
+.quickReports {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.quickReportButton {
+  background-color: #fff;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.quickReportButton:hover {
+  background-color: #f3f4f6;
+  border-color: #9ca3af;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.summary {
+  margin-top: 1rem;
+  color: #6b7280;
+}
+
+/* Estilos para células de distância */
+.distanceCell {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.distanceIcon {
+  color: #ef4444;
+  font-size: 1.1rem;
+}
+
+/* Estilos para indicador de impresso */
+.printedInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.printedIcon {
+  color: #16a34a;
+  font-size: 1.1rem;
+}
+
+.printedDate {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Estilos para linha de rodapé com total */
+.summaryRow {
+  background-color: #f8fafc;
+  border-top: 2px solid #e5e7eb;
+}
+
+.summaryCell {
+  text-align: right;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+}
+
+.summaryDistanceCell {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  color: #ef4444;
+}
+
+/* Estilos para área de assinatura */
+.signatureArea {
+  margin-top: 4rem;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 2rem;
+}
+
+.signatureHeader {
+  margin-bottom: 2rem;
+}
+
+.signatureHeader h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.signatureFields {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.signatureField {
+  flex: 1;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signatureLine {
+  width: 100%;
+  height: 0;
+  border-bottom: 1px solid #000;
+  margin-bottom: 0.5rem;
+}
+
+.signatureField p {
+  font-size: 0.9rem;
+  color: #4b5563;
+}
+
+.signatureDate {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+/* Estilos para o sumário de relatório */
+.reportSummary {
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.summaryInfo h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.summaryDetails {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .summaryDetails {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .summaryDetails {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.summaryItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.summaryLabel {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 0.25rem;
+}
+
+.summaryValue {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Destacar valor de quilometragem */
+.summaryItem:nth-child(2) .summaryValue {
+  color: #ef4444;
+}
+
+/* Estilos para impressão */
+@media print {
+  /* Remover margem da página, usar toda a página */
+  @page {
+    margin: 1cm;
+    size: portrait;
+  }
+  
+  /* Reset global para impressão */
+  .container * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  
+  /* Container principal - remover padding e aplicar estilos de impressão */
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    background-color: white !important;
+  }
+  
+  /* Garantir que TODOS os elementos de UI sejam ocultados */
+  .header,
+  .actions,
+  .filterButton,
+  .exportButton,
+  .printButton,
+  .filterPanel,
+  .quickReports,
+  .applyButton,
+  .clearButton,
+  .loading,
+  .emptyState,
+  .summary,
+  .container [role="button"],
+  .container [aria-label*="botão"],
+  .container [class*="Button"],
+  .container [class*="button"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    pointer-events: none !important;
+  }
+  
+  /* Elementos específicos que devem ser explicitamente ocultos */
+  .filterItem, 
+  .filterGrid, 
+  .filterLabel, 
+  .filterInput, 
+  .filterSelect, 
+  .filterPanelTitle, 
+  .actions button,
+  .distanceIcon {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  
+  /* Exibir APENAS os elementos desejados para impressão */
+  .reportHeader {
+    display: block !important;
+    visibility: visible !important;
+    margin-bottom: 1.5rem !important;
+    text-align: center !important;
+  }
+  
+  .reportTitle {
+    font-size: 18pt !important;
+    font-weight: bold !important;
+    margin-bottom: 0.5rem !important;
+    color: black !important;
+  }
+  
+  .reportDate, 
+  .reportPeriod {
+    font-size: 10pt !important;
+    margin-bottom: 0.25rem !important;
+    color: black !important;
+  }
+  
+  /* Estilo para o conteúdo real */
+  .table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+    page-break-inside: auto !important;
+    margin-top: 1rem !important;
+    border: 1px solid black !important;
+  }
+  
+  .tableRow {
+    page-break-inside: avoid !important;
+    page-break-after: auto !important;
+  }
+  
+  .tableCell {
+    border: 1px solid black !important;
+    padding: 6px !important;
+    font-size: 10pt !important;
+    color: black !important;
+  }
+  
+  .tableHeader {
+    display: table-header-group !important;
+    background-color: #f0f0f0 !important;
+    font-weight: bold !important;
+  }
+  
+  .signatureArea {
+    display: block !important;
+    margin-top: 3rem !important;
+    page-break-inside: avoid !important;
+    border-top: 1px solid black !important;
+    padding-top: 1rem !important;
+  }
+  
+  .summaryRow {
+    border-top: 1px solid black !important;
+    font-weight: bold !important;
+    background-color: #f0f0f0 !important;
+  }
+  
+  .reportSummary {
+    page-break-inside: avoid !important;
+    border: 1px solid black !important;
+    background-color: #f7f7f7 !important;
+    margin-bottom: 1rem !important;
+    padding: 0.5rem !important;
+  }
+  
+  .summaryDetails {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.5rem !important;
+  }
+  
+  .summaryItem {
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .reportDescription {
+    display: block !important;
+    margin-bottom: 1rem !important;
+    font-size: 10pt !important;
+    padding: 0.5rem !important;
+    background-color: white !important;
+    border-left: none !important;
+    border: 1px solid black !important;
+    color: black !important;
+  }
+  
+  .reportDescription p {
+    color: black !important;
+    font-size: 10pt !important;
+    margin: 0 !important;
+  }
+  
+  .table tbody {
+    font-size: 10pt !important;
+  }
+  
+  /* Garantir que todos os elementos interativos estejam ocultos */
+  .container button, 
+  .container input, 
+  .container select,
+  .container a,
+  .container [role="button"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  
+  /* Remover ícones ou substituir por texto quando necessário */
+  .container svg, 
+  .container img,
+  .container [class*="Icon"],
+  .icon {
+    display: none !important;
+  }
+  
+  /* Garantir que elemento com classe print:hidden sejam removidos */
+  .container .print\:hidden,
+  .container [class*="print:hidden"] {
+    display: none !important;
+    visibility: hidden !important;
+  }
+  
+  /* Garantir que elementos com classe hidden print:block sejam exibidos */
+  .container .hidden.print\:block,
+  .container [class*="hidden"][class*="print:block"] {
+    display: block !important;
+    visibility: visible !important;
+  }
+}
+
+.reportDescription {
+  padding: 0.75rem 1rem;
+  background-color: #f0f9ff;
+  border-left: 4px solid #38bdf8;
+  margin-bottom: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+.reportDescription p {
+  color: #0c4a6e;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.reportDescriptionHighlight {
+  margin-top: 8px;
+  padding: 6px 10px;
+  background-color: #fff7e6;
+  border-left: 3px solid #ffc53d;
+  border-radius: 4px;
+  color: #874d00 !important;
+}
+
+.summaryNote {
+  margin-top: 10px;
+  padding: 8px;
+  border-top: 1px dashed #ddd;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.summaryNote p {
+  margin: 0;
+}
+
+@media print {
+  .summaryNote {
+    font-size: 8pt !important;
+    color: #555 !important;
+    padding: 5px !important;
+    margin-top: 8px !important;
+  }
+}
+
+.officialsData {
+  background-color: #e6f7ff;
+  border-left: 3px solid #1890ff;
+  padding: 8px 12px;
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+}
+
+.officialsData p {
+  margin: 0;
+  color: #003a8c;
+}
+
+@media print {
+  .officialsData {
+    background-color: #f0f0f0 !important;
+    border-left: 2px solid #555 !important;
+    padding: 6px !important;
+    margin-bottom: 8px !important;
+    font-size: 8pt !important;
+  }
+  
+  .officialsData p {
+    color: #333 !important;
+  }
+} 
